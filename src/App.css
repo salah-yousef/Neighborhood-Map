@@ -1,0 +1,43 @@
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 50px;
+  margin-left: 93%
+}
+
+.App-header {
+  background-color: #212121;
+  height: 60px;
+  color: white;
+  width: 100%;
+}
+
+.App-sidebar {
+  background-color: #000;
+  height: 810px;
+  color: white;
+}
+
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.LeftSection{
+  width: 15%;
+  flex-wrap: wrap;
+}
+.RightSection{
+  flex-direction: column;
+  width: 85%;
+  flex-wrap: wrap;
+}
