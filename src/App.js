@@ -14,6 +14,10 @@ class App extends Component {
   componentDidMount(){
     PlacesAPI.getAllPlaces(30.0444,31.2357,'cafe').then((places) => {
       this.setState({places})
+    }).catch((error) => {
+      alert('Error While getting All Locations data from FourSquare API >> Sorry!! Locations Data Will not be loaded or displayed ')
+      console.log('Error While Getting All Locations')
+      
     })
   }
 
@@ -25,9 +29,13 @@ class App extends Component {
         </div>
         <div className="RightSection">
             <Header />
-            <MapContainer
-              places = {this.state.places} 
-            />
+            {
+              (this.state.places &&  <MapContainer 
+                places = {this.state.places} 
+                />)
+              
+            }
+            
         </div>
         
       </div>

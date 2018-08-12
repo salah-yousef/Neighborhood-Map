@@ -5,11 +5,12 @@ export class MapContainer extends Component {
   render() {
     const places = this.props.places
     return (
-      <Map google={this.props.google} zoom={16}>
-          center={{
+      <Map google={this.props.google} >
+          initialCenter ={{
             lat: 30.0444,
             lng: 31.2357
           }}
+          zoom={16}
         <Marker
               name={places[0].name}
               position={{lat: places[0].location.lat , lng:places[0].location.lng}} />
