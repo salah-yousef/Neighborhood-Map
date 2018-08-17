@@ -41,3 +41,6 @@
   width: 85%;
   flex-wrap: wrap;
 }
+input {
+  font-size: 12px;
+}
