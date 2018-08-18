@@ -20,7 +20,7 @@ class Sidebar extends Component {
     
     render () {
         return (
-            <div>
+            <div className="App-sidebar">
                 <FilterSearch
                     filterInput = {this.state.textInput}
                     handleTextInput = {this.handleTextInput.bind(this)}

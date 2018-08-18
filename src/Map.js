@@ -33,9 +33,14 @@ onMapClicked = (props) => {
     const places = this.props.places
     const { google, map } = this.props;
     console.log(places)
+    const style = {
+      width: '85%',
+      height: '100%'
+    }
     return (
       <Map google={this.props.google}
-          onClick={this.onMapClicked} 
+          onClick={this.onMapClicked}
+          style={style} 
           initialCenter ={{
             lat: 30.0444,
             lng: 31.2357

@@ -14,8 +14,9 @@ class FilterSearch extends Component {
 
     render() {
         return(
-            <div>
-                <input
+            <div className="filterSearch">
+                <input 
+                    className = "input"
                     role = "FilterTextInput"
                     aria-label = "FilterTextInput"
                     tabIndex = {0}

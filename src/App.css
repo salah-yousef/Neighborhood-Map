@@ -22,10 +22,23 @@
 
 .App-sidebar {
   background-color: #000;
-  height: 810px;
+  height: 105.9vh;
   color: white;
 }
 
+.filterSearch{
+  padding-top: 100px;
+}
+.input{
+  display: block;
+  margin: 0.1em auto;
+  padding: 0.5em 0.25em;
+  border: none;
+  border-radius: 0.2em;
+  font-size: 1em;
+  text-align: center;
+  box-shadow: 0 0 1em 0.25em rgba(0,0,0,0.2);
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
@@ -40,7 +53,4 @@
   flex-direction: column;
   width: 85%;
   flex-wrap: wrap;
-}
-input {
-  font-size: 12px;
 }
