@@ -3,30 +3,37 @@ import * as PlacesAPI from './PlacesAPI'
 import Header from './header'
 import Sidebar from './Sidebar'
 import Map from './Map'
+import escapeRegExp from 'escape-string-regexp';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      places: []
+      places: [],
+      filteredPlaces: []     
     }
     this.itemClicked = this.itemClicked.bind(this);
     this.toggleBounce = this.toggleBounce.bind(this);
     this.filterMarkers = this.filterMarkers.bind(this);
-
+    this.onUpdate = this.onUpdate.bind(this);
   }
 
+  
   componentDidMount(){
     PlacesAPI.getAllPlaces(30.0444,31.2357,'cafe').then((places) => {
       this.setState({places})
     }).catch((error) => {
       alert('Error While getting All Locations data from FourSquare API >> Sorry!! Locations Data Will not be loaded or displayed ')
-      console.log('Error While Getting All Locations')
-      
+      console.log('Error While Getting All Locations')    
     })
-  
   }
+
+  onUpdate = (val) => {
+    this.setState({
+      filteredPlaces: val
+    })
+  };
 
   toggleBounce(marker) {
     console.log('bouncing?')
@@ -42,37 +49,36 @@ class App extends Component {
   }
 
   filterMarkers(filter) {
-    let places = [...this.state.places];
-    places.forEach((item) => {
+    // let places = [...this.state.places]
+    const {places} = this.state
+    const filteredPlaces = places.map((item) => {
       if (item.name.toLowerCase().indexOf(filter.toLowerCase()) === -1) {
-        item.isVisible = false;
-        return;
+        item.isVisible = false
+        return item;
       }
+      
       item.isVisible = true;
-    });
-    this.setState({ 
-      places
-    });
+      return item;
+    })
+    this.setState({ filteredPlaces }) 
   }
-
 
 
   itemClicked(itemID) {
     let places = [...this.state.places];
-    places.forEach((item) => {
+    places.map((item) => {
       if (item.id === itemID) {
         if (item.selected === undefined) {
-          item.selected = true;
+          item.selected = true
         } else {
-          item.selected = !item.selected;
+          item.selected = !item.selected
         }
-        return;
+        this.setState({places})
+        return
       }
-      this.setState({ 
-        places,
-      });
-    });
+    })
   }
+
 
   render() {
     return (
@@ -81,18 +87,30 @@ class App extends Component {
             <Sidebar 
                   items = {this.state.places}
                   itemClicked = {this.itemClicked}
-                  filterMarkers = {this.filterMarkers}  
+                  filterMarkers = {this.filterMarkers}
+                  onUpdate = {this.onUpdate}
             />
         </div>
         <div className="RightSection">
             <Header />
             {
-              (this.state.places &&  <Map
-                role="application"
-                toggleBounce={this.toggleBounce} 
-                places = {this.state.places} 
-                />)
-              
+                this.state.filteredPlaces.length>0 ? 
+                (
+                  <Map
+                    role="application"
+                    toggleBounce={this.toggleBounce} 
+                    places = {this.state.filteredPlaces}
+                    filterMarkers = {this.filterMarkers}   
+                  />
+                ) : 
+                (
+                  <Map
+                  role="application"
+                  toggleBounce={this.toggleBounce} 
+                  places = {this.state.places}
+                  filterMarkers = {this.filterMarkers}   
+                  />
+                )
             }
             
         </div>

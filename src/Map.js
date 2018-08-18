@@ -32,6 +32,7 @@ onMapClicked = (props) => {
   render() {
     const places = this.props.places
     const { google, map } = this.props;
+    console.log(places)
     return (
       <Map google={this.props.google}
           onClick={this.onMapClicked} 
@@ -54,7 +55,7 @@ onMapClicked = (props) => {
               position={{lat: place.location.lat , lng:place.location.lng}}
               map = {map}
               animation= {place.selected ? google.maps.Animation.BOUNCE : null}
-       
+              visible={place.isVisible}
             />)
           }
         <InfoWindow
