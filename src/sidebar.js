@@ -1,11 +1,38 @@
 import React, {Component } from 'react'
-import './App.css';
+import ListView from './ListView'
+import FilterSearch from './FilterSearch'
+import './App.css'
+
 
 class Sidebar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            textInput: ''
+        }
+        this.handleTextInput = this.handleTextInput.bind(this);
+    }
+
+    handleTextInput(textInput) {
+        this.setState({textInput});
+        this.props.filterMarkers(textInput);
+    }
+    
     render () {
         return (
-                <aside className="App-sidebar" >
-                </aside>
+            <div>
+                <FilterSearch
+                    filterInput = {this.state.textInput}
+                    handleTextInput = {this.handleTextInput.bind(this)}
+                    onFilterInput = {this.props.itemClicked}
+                />
+                <ListView
+                    items = {this.props.items}
+                    itemClicked = {this.props.itemClicked}
+                    filterInput = {this.state.textInput}
+                    onUpdate = {this.props.onUpdate}
+                />
+            </div>
         )
     }
 }
