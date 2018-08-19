@@ -1,6 +1,8 @@
 .flex-container {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
+  align-items: stretch;
 }
 
 .App {
@@ -18,6 +20,8 @@
   height: 60px;
   color: white;
   width: 100%;
+  position: absolute;
+   z-index: 1;
 }
 
 .App-sidebar {
@@ -28,6 +32,7 @@
 
 .filterSearch{
   padding-top: 100px;
+  background-color: #212121
 }
 .input{
   display: block;
@@ -48,9 +53,28 @@
 .LeftSection{
   width: 15%;
   flex-wrap: wrap;
+  order: 1;
+  position: absolute;
+  transform: translate(-15%, 0);
+  transition: transform 0.3s ease;
+}
+.LeftSectionOpen{
+  transform: translate(0, 0);
 }
 .RightSection{
   flex-direction: column;
   width: 85%;
   flex-wrap: wrap;
+  order: 2
+}
+img{
+  max-width: 100%;
+}
+a, button {
+  min-width:48px;
+  min-height:48px;
+}
+#menu svg {
+  width: 40px;
+  fill: #fff;
 }

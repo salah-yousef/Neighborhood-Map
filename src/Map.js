@@ -34,8 +34,9 @@ onMapClicked = (props) => {
     const { google, map } = this.props;
     console.log(places)
     const style = {
-      width: '85%',
-      height: '100%'
+      width: '100%',
+      height: '100%',
+      top: '60px'
     }
     return (
       <Map google={this.props.google}
