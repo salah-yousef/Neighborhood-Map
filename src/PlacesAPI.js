@@ -17,7 +17,7 @@ fetch(`${API}/venues/search?ll=${lat},${lng}&limit=${SEARCH_RESULTS}
 
     
 export const getMyPlaces = function findPlace(userSearch) {
-    getAllPlaces(30.0444,31.2357,'cafe').then((places)=>{
+    getAllPlaces(48.2082,16.3738,'cafe').then((places)=>{
         console.log(places.filter(place => place.name === 'Cafe'));
         console.log(places[0].name);
         

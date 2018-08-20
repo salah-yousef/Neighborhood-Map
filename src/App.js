@@ -21,7 +21,7 @@ class App extends Component {
 
   
   componentDidMount(){
-    PlacesAPI.getAllPlaces(30.0444,31.2357,'cafe').then((places) => {
+    PlacesAPI.getAllPlaces(48.2082,16.3738,'cafe').then((places) => {
       this.setState({places})
     }).catch((error) => {
       alert('Error While getting All Locations data from FourSquare API >> Sorry!! Locations Data Will not be loaded or displayed ')

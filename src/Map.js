@@ -47,8 +47,8 @@ onMapClicked = (props) => {
           onClick={this.onMapClicked}
           style={style} 
           initialCenter ={{
-            lat: 30.0444,
-            lng: 31.2357
+            lat: 48.2082,
+            lng: 16.3738
           }}
           aria-label="location" 
           role="application" 
