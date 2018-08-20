@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import * as PlacesAPI from './PlacesAPI'
 import Header from './header'
+import Footer from './Footer'
 import Sidebar from './Sidebar'
 import Map from './Map'
-import escapeRegExp from 'escape-string-regexp';
 import './App.css';
 
 class App extends Component {
@@ -79,42 +79,47 @@ class App extends Component {
     })
   }
 
-
+ 
   render() {
     return (
       <div className="App flex-container">
-        <div className="LeftSection">
-            <Sidebar 
-                  items = {this.state.places}
-                  itemClicked = {this.itemClicked}
-                  filterMarkers = {this.filterMarkers}
-                  onUpdate = {this.onUpdate}
-            />
-        </div>
-        <div className="RightSection">
-            <Header />
-            {
-                this.state.filteredPlaces.length>0 ? 
-                (
-                  <Map
-                    role="application"
-                    toggleBounce={this.toggleBounce} 
-                    places = {this.state.filteredPlaces}
-                    filterMarkers = {this.filterMarkers}   
+      <Header />
+      <div className="BodySection">
+            <div className="LeftSection">
+                  <Sidebar 
+                        items = {this.state.places}
+                        itemClicked = {this.itemClicked}
+                        filterMarkers = {this.filterMarkers}
+                        onUpdate = {this.onUpdate}
                   />
-                ) : 
-                (
-                  <Map
-                  role="application"
-                  toggleBounce={this.toggleBounce} 
-                  places = {this.state.places}
-                  filterMarkers = {this.filterMarkers}   
-                  />
-                )
-            }
-            
-        </div>
-        
+            </div>
+            <div className="RightSection">
+                  {
+                      this.state.filteredPlaces.length>0 ? 
+                      (
+                        <div className="mapElement">
+                          <Map
+                            role="application"
+                            toggleBounce={this.toggleBounce} 
+                            places = {this.state.filteredPlaces}
+                            filterMarkers = {this.filterMarkers}  
+                          />
+                        </div>
+                      ) : 
+                      (
+                        <div className="mapElement">
+                          <Map
+                          role="application"
+                          toggleBounce={this.toggleBounce} 
+                          places = {this.state.places}
+                          filterMarkers = {this.filterMarkers}   
+                          />
+                        </div>
+                      )
+                  }
+            </div>
+      </div>
+        <Footer />
       </div>
     );
   }

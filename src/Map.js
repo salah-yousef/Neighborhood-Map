@@ -29,6 +29,9 @@ onMapClicked = (props) => {
   }
 };
 
+
+
+
   render() {
     const places = this.props.places
     const { google, map } = this.props;
@@ -36,10 +39,11 @@ onMapClicked = (props) => {
     const style = {
       width: '100%',
       height: '100%',
-      top: '60px'
     }
     return (
-      <Map google={this.props.google}
+      <Map 
+          className="my-map"
+          google={this.props.google}
           onClick={this.onMapClicked}
           style={style} 
           initialCenter ={{
@@ -81,11 +85,8 @@ onMapClicked = (props) => {
   }
 }
 
-const LoadingContainer = (props) => (
-  <div>Fancy loading container!</div>
-)
+
  
 export default GoogleApiWrapper({
   apiKey: ('AIzaSyCEJAF8ARvJG4y9q4nmsgAQBTef5ToY2mw'),
-  LoadingContainer: LoadingContainer
 })(myMap)

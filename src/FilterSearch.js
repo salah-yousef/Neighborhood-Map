@@ -24,9 +24,6 @@ class FilterSearch extends Component {
                     placeholder = "Search for new places"
                     value = {this.props.filterInput}
                     onChange = {this.handleTextInput}
-                    //value = {this.state.places}
-                    //onChange = {this.update}
-
                 />
             </div>
         )

@@ -26,12 +26,14 @@ class Sidebar extends Component {
                     handleTextInput = {this.handleTextInput.bind(this)}
                     onFilterInput = {this.props.itemClicked}
                 />
-                <ListView
-                    items = {this.props.items}
-                    itemClicked = {this.props.itemClicked}
-                    filterInput = {this.state.textInput}
-                    onUpdate = {this.props.onUpdate}
-                />
+                <div className="my-list">
+                    <ListView
+                        items = {this.props.items}
+                        itemClicked = {this.props.itemClicked}
+                        filterInput = {this.state.textInput}
+                        onUpdate = {this.props.onUpdate}
+                    />
+                </div>
             </div>
         )
     }
