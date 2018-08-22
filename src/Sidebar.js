@@ -31,7 +31,6 @@ class Sidebar extends Component {
                         items = {this.props.items}
                         itemClicked = {this.props.itemClicked}
                         filterInput = {this.state.textInput}
-                        onUpdate = {this.props.onUpdate}
                     />
                 </div>
             </div>

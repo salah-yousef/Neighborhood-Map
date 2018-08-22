@@ -10,14 +10,13 @@ class List extends Component {
         const name = this.props.list.name
         
         return (
-            <ul
+            <li
+            className="my-item"
             role = "listItem"
             tabIndex={0}
             onClick={this.triggerMarker.bind(this, this.props.list)}>
-                <li>
                     {name}
-                </li>
-            </ul>
+            </li>
         )
     }
 }

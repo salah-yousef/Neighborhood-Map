@@ -9,20 +9,13 @@ class ListView extends Component {
         }
     }
     
-    update = (e) => {
-        console.log(e);
-        
-        console.log(e.target.value);
-        this.props.onUpdate(e.target.value);
-        this.setState({filteredPlaces: e.target.value});
-    }
+   
 
     
     render() {
         const myStack = [];
         const items = this.props.items
         const filterInput = this.props.filterInput;
-        console.log(items);
 
         items.map((item) => {
             if (item.name.toLowerCase().indexOf(filterInput.toLowerCase()) === -1) {
@@ -41,9 +34,9 @@ class ListView extends Component {
         });
 
         return (
-            <div>
+            <ul>
                 {myStack}     
-            </div>
+            </ul>
           );
 
     }

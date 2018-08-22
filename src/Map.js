@@ -13,21 +13,28 @@ export class myMap extends Component {
     this.onMapClicked = this.onMapClicked.bind(this);
   }
  
-  onMarkerClick = (props, marker, e) =>
-  this.setState({
-    selectedPlace: props,
-    activeMarker: marker,
-    showingInfoWindow: true
-  });
-
-onMapClicked = (props) => {
+onMarkerClick = (props, marker) =>{
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    })
+}
+onMapClicked = () => {
   if (this.state.showingInfoWindow) {
     this.setState({
       showingInfoWindow: false,
       activeMarker: null
     })
   }
-};
+  this.props.places.map((item) => {    
+    item.selected = false 
+    this.setState({
+      activeMarker: {},
+      selectedPlace: {},
+    })
+  })
+}
 
 
 
@@ -35,7 +42,6 @@ onMapClicked = (props) => {
   render() {
     const places = this.props.places
     const { google, map } = this.props;
-    console.log(places)
     const style = {
       width: '100%',
       height: '100%',
@@ -61,7 +67,6 @@ onMapClicked = (props) => {
               onClick={this.onMarkerClick}
               name={place.name}
               address={place.location.address}
-              selected={place.id === this.props.selectedCafe}
               position={{lat: place.location.lat , lng:place.location.lng}}
               map = {map}
               animation= {place.selected ? google.maps.Animation.BOUNCE : null}
@@ -88,5 +93,5 @@ onMapClicked = (props) => {
 
  
 export default GoogleApiWrapper({
-  apiKey: ('AIzaSyCEJAF8ARvJG4y9q4nmsgAQBTef5ToY2mw'),
+  apiKey: ('AISaSyCEJAF8ARvJG4y9q4nmsgAQBTef5ToY2mw'),
 })(myMap)

@@ -12,7 +12,6 @@ class Header extends Component {
     }    
     handleClickMenu(e) {
         e.preventDefault();
-        console.log('The hamburger menu was clicked');
         const drawer = document.querySelector('.LeftSection');
           this.setState(prevState => ({
           isToggleOn: !prevState.isToggleOn

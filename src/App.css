@@ -14,7 +14,10 @@
 .App {
   text-align: center;
 }
-
+.my-item{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 .App-footer {
   width: 100%;
   order: 2;
