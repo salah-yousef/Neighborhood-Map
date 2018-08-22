@@ -93,5 +93,5 @@ onMapClicked = () => {
 
  
 export default GoogleApiWrapper({
-  apiKey: ('AISaSyCEJAF8ARvJG4y9q4nmsgAQBTef5ToY2mw'),
+  apiKey: ('AIzaSyCEJAF8ARvJG4y9q4nmsgAQBTef5ToY2mw'),
 })(myMap)
